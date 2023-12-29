@@ -7,8 +7,9 @@ const Saved = () => {
   const [saved_articles, setSavedArticles] = useState([]);
 
   useEffect(() => {
+    let savedArticlesFromLocalStorage = [];
     if(typeof window !== 'undefined'){
-      const savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
+      savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
     }
     setSavedArticles(savedArticlesFromLocalStorage || []);
   }, []);

@@ -14,10 +14,11 @@ const News_detail = () => {
     // console.log('local article', article);
 
     const addFavourite = async (article) => {
+        var user = null;
         if(typeof window !== 'undefined'){
-            const user = sessionStorage.getItem('user_id');
+            user = sessionStorage.getItem('user_id');
         }else{
-            const user = null;
+            user = null;
         }
         // const user = sessionStorage.getItem('user_id');
         const docRef = doc(db, 'users', user);

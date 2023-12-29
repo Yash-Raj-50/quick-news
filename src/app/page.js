@@ -19,10 +19,15 @@ export default function Home() {
     const userSession = null;
   }
   const [user, loading, error] = useIdToken(auth);
-  const [articles, setArticles] = useState();
-  if (typeof window !== 'undefined') {
-    setArticles((sessionStorage.getItem('articles')) ? (JSON.parse(sessionStorage.getItem('articles'))) : dummyData);
-  }
+  const [articles, setArticles] = useState([]);
+  // if (typeof window !== 'undefined') {
+  //   setArticles((sessionStorage.getItem('articles')) ? (JSON.parse(sessionStorage.getItem('articles'))) : dummyData);
+  // }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setArticles((sessionStorage.getItem('articles')) ? (JSON.parse(sessionStorage.getItem('articles'))) : dummyData);
+    }
+  }, []); // Empty dependency array means this effect will only run once
   const [view, setView] = useState('1');
 
   async function getData() {
@@ -67,12 +72,12 @@ export default function Home() {
     }
   }, []);
 
-  if (loading) {
-    return <div className='h-screen flex items-center justify-center'>Loading...</div>
-  }
+  // if (loading) {
+  //   return <div className='h-screen flex items-center justify-center'>Loading...</div>
+  // }
 
   if (!loading) {
-    if (!userSession || !user) {
+    if (!user) {
       router.push('/authentication/signin');
     }
   }

@@ -6,10 +6,11 @@ import { message } from 'antd';
 import { useRouter } from 'next/navigation';
 
 const ListView = ({ articles }) => {
-    // console.log('articles recieved ', articles)
+    console.log('articles recieved ', articles)
     const addFavourite = async (article) => {
+        let user = null;
         if(typeof window !== 'undefined'){
-            const user = sessionStorage.getItem('user_id');
+            user = sessionStorage.getItem('user_id');
         }
         const docRef = doc(db, 'users', user);
 
@@ -31,8 +32,9 @@ const ListView = ({ articles }) => {
     }
 
     const deleteFavourite = async (article) => {
+        let user = null;
         if(typeof window !== 'undefined'){
-            const user = sessionStorage.getItem('user_id');
+            user = sessionStorage.getItem('user_id');
         }
         // const user = sessionStorage.getItem('user_id');
         const docRef = doc(db, 'users', user);
