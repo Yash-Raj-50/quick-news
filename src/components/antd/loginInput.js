@@ -19,8 +19,10 @@ const LoginInput = () => {
       // console.log('Success:', values);
       const res = await signInWithEmailAndPassword(values.email, values.password);
       // console.log(res);
-      sessionStorage.setItem('user_email', res.user.email);
-      sessionStorage.setItem('user_id', res.user.uid);
+      if(typeof window !== 'undefined') {
+        sessionStorage.setItem('user_email', res.user.email);
+        sessionStorage.setItem('user_id', res.user.uid);
+      }
       router.push('/');
     } catch(e) {
       console.error(e);

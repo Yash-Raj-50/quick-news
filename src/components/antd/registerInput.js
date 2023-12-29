@@ -29,7 +29,9 @@ const RegisterInput = () => {
                 return null;
             });
             // console.log(res);
-            sessionStorage.setItem('user', true);
+            if(typeof window !== 'undefined') {
+                sessionStorage.setItem('user', true);
+            }
             router.push('/authentication/signin');
         } catch(e) {
             console.error(e);

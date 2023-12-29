@@ -15,8 +15,10 @@ const Navbar = () => {
     const router = useRouter();
     const logout = () => {
         signOut(auth);
-        sessionStorage.removeItem('user_email');
-        sessionStorage.removeItem('user_id');
+        if(typeof window !== 'undefined') {
+            sessionStorage.removeItem('user_email');
+            sessionStorage.removeItem('user_id');
+        }
         router.push('/authentication/signin');
     }
     const [open, setOpen] = useState(false);
@@ -45,7 +47,9 @@ const Navbar = () => {
                         <button className='flex items-center gap-2 justify-center bg-indigo-100 p-3 border border-black rounded hover:scale-105 h-full'
                             onClick={logout}
                             >
-                            {sessionStorage.getItem('user_email')}
+                            {(typeof window !== 'undefined')
+                            && (sessionStorage.getItem('user_email'))}
+                            {/* {sessionStorage.getItem('user_email')} */}
                             <div className='bg-white rounded-full h-10'>
                                 <Image src={profilePic} className='h-full w-full'/>
                             </div>
@@ -63,7 +67,7 @@ const Navbar = () => {
                             <button className='flex items-center gap-2 justify-center bg-indigo-100 p-3 border border-black rounded hover:scale-105'
                                 onClick={logout}
                                 >
-                                {sessionStorage.getItem('user_email')}
+                                {(typeof Window !== 'undefined') && sessionStorage.getItem('user_email')}
                                 <div className='bg-white rounded-full h-10'>
                                     <Image src={profilePic} className='h-full w-full'/>
                                 </div>

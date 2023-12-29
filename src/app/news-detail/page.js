@@ -1,16 +1,25 @@
 'use client';
 
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Button, Divider, message } from 'antd';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../app/firebase/config';
 
 const News_detail = () => {
-    const article = JSON.parse(sessionStorage.getItem('detailNews'));
+    var article = {};
+    if(typeof window !== 'undefined'){
+        //  userSession = sessionStorage.getItem('user_id');
+         article = JSON.parse(sessionStorage.getItem('detailNews'));
+    }
     // console.log('local article', article);
 
     const addFavourite = async (article) => {
-        const user = sessionStorage.getItem('user_id');
+        if(typeof window !== 'undefined'){
+            const user = sessionStorage.getItem('user_id');
+        }else{
+            const user = null;
+        }
+        // const user = sessionStorage.getItem('user_id');
         const docRef = doc(db, 'users', user);
 
         try {
@@ -31,11 +40,19 @@ const News_detail = () => {
     }
 
     const saveArticle = async (article) => {
-        const savedArticles = JSON.parse(localStorage.getItem('saved_Articles')) || [];
+        if(typeof window !== 'undefined'){
+            const savedArticles = JSON.parse(localStorage.getItem('saved_Articles')) || [];
+        }else{
+            const savedArticles = null;
+        }
+        // const savedArticles = JSON.parse(localStorage.getItem('saved_Articles')) || [];
         const isArticleSaved = savedArticles.some((savedArticle) => savedArticle.title === article.title);
         if (!isArticleSaved) {
             savedArticles.push(article);
-            localStorage.setItem('saved_Articles', JSON.stringify(savedArticles));
+            if(typeof window !== 'undefined'){
+                localStorage.setItem('saved_Articles', JSON.stringify(savedArticles));
+            }
+            // localStorage.setItem('saved_Articles', JSON.stringify(savedArticles));
             message.success('Article saved for Offline');
         } else {
             message.warning('Article already saved');

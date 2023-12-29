@@ -7,14 +7,17 @@ const Saved = () => {
   const [saved_articles, setSavedArticles] = useState([]);
 
   useEffect(() => {
-    const savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
+    if(typeof window !== 'undefined'){
+      const savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
+    }
     setSavedArticles(savedArticlesFromLocalStorage || []);
   }, []);
-
-  window.addEventListener('storage', () => {
-    const savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
-    setSavedArticles(savedArticlesFromLocalStorage || []);
-  });
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', () => {
+      const savedArticlesFromLocalStorage = JSON.parse(localStorage.getItem('saved_Articles'));
+      setSavedArticles(savedArticlesFromLocalStorage || []);
+    });
+  }
 
   return (
     <main className="bg-zinc-200" style={{ height: "93%" }}>

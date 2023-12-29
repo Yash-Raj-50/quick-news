@@ -9,8 +9,11 @@ import { useEffect } from 'react';
 
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
-
-  const user = sessionStorage.getItem('user_id');
+  var user = "okGkIooFqOg0lJBL6IrnvSilC9p1";
+  if(typeof window !== 'undefined'){
+    user = sessionStorage.getItem('user_id');
+  }
+  // const user = sessionStorage.getItem('user_id');
   const docRef = doc(db, 'users', user);
   useEffect(() => {
     const fetchData = async () => {

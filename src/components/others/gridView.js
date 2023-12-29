@@ -8,7 +8,9 @@ import { useRouter } from 'next/navigation';
 const GridView = ({ articles }) => {
 
     const addFavourite = async (article) => {
-        const user = sessionStorage.getItem('user_id');
+        if(typeof window !== 'undefined'){
+            const user = sessionStorage.getItem('user_id');
+        }
         const docRef = doc(db, 'users', user);
 
         try {
@@ -42,7 +44,9 @@ const GridView = ({ articles }) => {
 
     const router = useRouter();
     const setDetailNews = (article) => {
-        sessionStorage.setItem('detailNews', JSON.stringify(article));
+        if(typeof window !== 'undefined'){
+            sessionStorage.setItem('detailNews', JSON.stringify(article));
+        }
         router.push('/news-detail');
     }
 

@@ -8,7 +8,9 @@ import { useRouter } from 'next/navigation';
 const ListView = ({ articles }) => {
     // console.log('articles recieved ', articles)
     const addFavourite = async (article) => {
-        const user = sessionStorage.getItem('user_id');
+        if(typeof window !== 'undefined'){
+            const user = sessionStorage.getItem('user_id');
+        }
         const docRef = doc(db, 'users', user);
 
         try {
@@ -29,7 +31,10 @@ const ListView = ({ articles }) => {
     }
 
     const deleteFavourite = async (article) => {
-        const user = sessionStorage.getItem('user_id');
+        if(typeof window !== 'undefined'){
+            const user = sessionStorage.getItem('user_id');
+        }
+        // const user = sessionStorage.getItem('user_id');
         const docRef = doc(db, 'users', user);
 
         try {
@@ -59,7 +64,10 @@ const ListView = ({ articles }) => {
 
     const router = useRouter();
     const setDetailNews = (article) => {
-        sessionStorage.setItem('detailNews', JSON.stringify(article));
+        if(typeof window !== 'undefined'){
+            sessionStorage.setItem('detailNews', JSON.stringify(article));
+        }
+        // sessionStorage.setItem('detailNews', JSON.stringify(article));
         router.push('/news-detail');
         // console.log('button clicked');
     }
