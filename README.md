@@ -2,6 +2,7 @@ This is a Next-Js-based news application, with Firebase authorization. It utiliz
 
 Loom Video Demonstration for the project - [Loom Video](https://www.loom.com/share/07c6c29912cd4e828e4e47e95277cf5e?sid=5731aca7-9a45-4c65-9a84-26ef42902872)
 
+Live Vercel Deployment - [Live Site](https://quick-news-teal.vercel.app/) 
 ### Tech-Stack 👨‍💻
 
 - Next Js
