@@ -11,9 +11,9 @@ const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
   var user = "okGkIooFqOg0lJBL6IrnvSilC9p1";
   if(typeof window !== 'undefined'){
-    user = sessionStorage.getItem('user_id');
+    user = sessionStorage.getItem('user_id') || user;
   }
-  // const user = sessionStorage.getItem('user_id');
+
   const docRef = doc(db, 'users', user);
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,7 @@ const Favourites = () => {
         if (userData && userData.favourites) {
           setFavourites(userData.favourites);
         }
-        // console.log(favourites);
+
       } catch (error) {
         console.log(error);
       }
@@ -41,16 +41,6 @@ const Favourites = () => {
 
     return () => unsubscribe();
   }, []);
-  // try {
-  //   getDoc(docRef, (doc) => {
-  //     const userData = doc.data();
-  //     if (userData && userData.favourites) {
-  //       setFavourites(userData.favourites);
-  //     }
-  //   });
-  // } catch (error) {
-  //   console.error(error);
-  // }
 
   return (
     <main className="bg-violet-100" style={{ height: "93%" }}>

@@ -13,11 +13,6 @@ import dummyData from '../components/others/dummyData';
 export default function Home() {
 
   const router = useRouter();
-  if (typeof window !== 'undefined') {
-    const userSession = sessionStorage.getItem('user_id');
-  } else {
-    const userSession = null;
-  }
   const [user, loading, error] = useIdToken(auth);
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -40,20 +35,14 @@ export default function Home() {
       'pageSize=50&' +
       'apiKey=63f6b34cef304a01a5ce28096693a965';
 
-    console.log(" inside get data function");
-
     try {
-      // Fetch data in JSON format
       let response = await fetch(url1);
       let data = await response.json();
 
-      console.log(" outside data fetched function, data:", data);
-      console.log(" outside data fetched function ", data.articles.length);
       if (data.articles.length > 0) {
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('articles', JSON.stringify(data.articles));
         }
-        // sessionStorage.setItem('articles', JSON.stringify(data.articles));
         setArticles(data.articles);
       }
     } catch (error) {
@@ -62,7 +51,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // console.log("window type :", typeof window, " Not Undefined :", window !== 'undefined');
     if (typeof window !== 'undefined') {
       if (!sessionStorage.getItem('articles')) {
         getData();
@@ -71,10 +59,6 @@ export default function Home() {
       }
     }
   }, []);
-
-  // if (loading) {
-  //   return <div className='h-screen flex items-center justify-center'>Loading...</div>
-  // }
 
   if (!loading) {
     if (!user) {
@@ -103,3 +87,7 @@ export default function Home() {
     </main>
   )
 }
+
+  // if (loading) {
+  //   return <div className='h-screen flex items-center justify-center'>Loading...</div>
+  // }

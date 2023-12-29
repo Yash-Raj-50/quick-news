@@ -16,9 +16,7 @@ const LoginInput = () => {
 
   const onFinish = async (values) => {
     try {
-      // console.log('Success:', values);
       const res = await signInWithEmailAndPassword(values.email, values.password);
-      // console.log(res);
       if(typeof window !== 'undefined') {
         sessionStorage.setItem('user_email', res.user.email);
         sessionStorage.setItem('user_id', res.user.uid);
