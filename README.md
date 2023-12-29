@@ -1,5 +1,12 @@
 This is a Next-Js-based news application, with Firebase authorization. It utilizes NewsAPI for fetching real-time news headlines.
 
+### Tech-Stack 👨‍💻
+
+- Next Js
+- FireBase and FireStore
+- Tailwind CSS
+- Ant Design Components
+
 ## Features ⚡️
 
 - Firebase Authorization including SignIn, SignUp and Email-password reset.
