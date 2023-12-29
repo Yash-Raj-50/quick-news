@@ -50,13 +50,13 @@ export default function Home() {
       // Get all articles
       // const articles = data.articles;
       // console.log("data fetched ", data);
-      if (data.articles.length > 0) {
+      // if (data.articles.length > 0) {
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('articles', JSON.stringify(data.articles));
         }
         // sessionStorage.setItem('articles', JSON.stringify(data.articles));
         setArticles(data.articles);
-      }
+      // }
     } catch (error) {
       console.error('Failed to fetch news:', error.message);
     }
