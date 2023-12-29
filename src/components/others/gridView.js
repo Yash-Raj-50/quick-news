@@ -48,16 +48,18 @@ const GridView = ({ articles }) => {
 
     return (
         <div className='h-full flex w-full justify-around overflow-y-scroll'>
-
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl gap-4 h-fit'>
                 {articles.map((article, index) => {
                     const publishedDate = new Date(article.publishedAt).toLocaleDateString();
                     return (
-                        <div className='flex justify-center items-center'>
-                            <GridViewCard article={article} publishedDate={publishedDate}
-                            onFavClick={(article) => { addFavourite(article); }}
-                            onSaveClick={(article)=> { saveArticle(article);} } 
-                            openNewsClick={(article)=>{ setDetailNews(article);}} />
+                        <div className='flex justify-center items-center' key={index}>
+                            <GridViewCard
+                                article={article}
+                                publishedDate={publishedDate}
+                                onFavClick={(article) => { addFavourite(article); }}
+                                onSaveClick={(article) => { saveArticle(article); }}
+                                openNewsClick={(article) => { setDetailNews(article); }}
+                            />
                         </div>
                     )
                 })}

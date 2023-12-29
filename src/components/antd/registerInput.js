@@ -9,7 +9,7 @@ import { doc, setDoc } from 'firebase/firestore';
 
 import { useRouter } from 'next/navigation';
 
-const registerInput = () => {
+const RegisterInput = () => {
     const router = useRouter();
 
     const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
@@ -124,4 +124,4 @@ const registerInput = () => {
     )
 }
 
-export default registerInput
+export default RegisterInput

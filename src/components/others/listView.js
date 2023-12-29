@@ -79,7 +79,7 @@ const ListView = ({ articles }) => {
                 {articles.map((article, index) => {
                     const publishedDate = new Date(article.publishedAt).toLocaleDateString();
                     return (
-                        <div className='flex justify-center items-center'>
+                        <div className='flex justify-center items-center' key={index}>
                             <ListViewCard article={article} publishedDate={publishedDate} 
                             onFavClick={(article) => { addFavourite(article); }}
                             onDeleteClick={(article) => { deleteFavourite(article); }}

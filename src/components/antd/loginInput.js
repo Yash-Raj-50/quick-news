@@ -10,7 +10,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../app/firebase/config';
 
 
-const loginInput = () => {
+const LoginInput = () => {
   const router = useRouter();
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
@@ -92,4 +92,4 @@ const loginInput = () => {
   )
 }
 
-export default loginInput
+export default LoginInput

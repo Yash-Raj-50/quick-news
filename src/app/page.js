@@ -9,7 +9,6 @@ import { Radio } from 'antd';
 import ListView from '../components/others/listView';
 import GridView from '../components/others/gridView';
 import dummyData from '../components/others/dummyData';
-import newsCartoon from '../assets/newscartoon.png'
 
 export default function Home() {
 
