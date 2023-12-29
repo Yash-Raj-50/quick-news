@@ -20,14 +20,12 @@ export default function Home() {
   }
   const [user, loading, error] = useIdToken(auth);
   const [articles, setArticles] = useState([]);
-  // if (typeof window !== 'undefined') {
-  //   setArticles((sessionStorage.getItem('articles')) ? (JSON.parse(sessionStorage.getItem('articles'))) : dummyData);
-  // }
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setArticles((sessionStorage.getItem('articles')) ? (JSON.parse(sessionStorage.getItem('articles'))) : dummyData);
     }
-  }, []); // Empty dependency array means this effect will only run once
+  }, []); 
+
   const [view, setView] = useState('1');
 
   async function getData() {
@@ -42,13 +40,16 @@ export default function Home() {
       'pageSize=50&' +
       'apiKey=63f6b34cef304a01a5ce28096693a965';
 
+    console.log(" inside get data function");
+
     try {
       // Fetch data in JSON format
-      let response = await fetch(url2);
+      let response = await fetch(url1);
       let data = await response.json();
 
+      console.log(" outside data fetched function, data:", data);
+      console.log(" outside data fetched function ", data.articles.length);
       if (data.articles.length > 0) {
-        console.log("data fetched function ", data.articles.length);
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('articles', JSON.stringify(data.articles));
         }
@@ -61,7 +62,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("window type :", typeof window, " Not Undefined :", window !== 'undefined');
+    // console.log("window type :", typeof window, " Not Undefined :", window !== 'undefined');
     if (typeof window !== 'undefined') {
       if (!sessionStorage.getItem('articles')) {
         getData();
