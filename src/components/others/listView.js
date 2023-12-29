@@ -6,7 +6,7 @@ import { message } from 'antd';
 import { useRouter } from 'next/navigation';
 
 const ListView = ({ articles }) => {
-    console.log('articles recieved ', articles)
+    // console.log('articles recieved in List View', articles)
     const addFavourite = async (article) => {
         let user = null;
         if(typeof window !== 'undefined'){

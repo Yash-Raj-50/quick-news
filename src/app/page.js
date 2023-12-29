@@ -47,22 +47,21 @@ export default function Home() {
       let response = await fetch(url2);
       let data = await response.json();
 
-      // Get all articles
-      // const articles = data.articles;
-      // console.log("data fetched ", data);
-      // if (data.articles.length > 0) {
+      if (data.articles.length > 0) {
+        console.log("data fetched function ", data.articles.length);
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('articles', JSON.stringify(data.articles));
         }
         // sessionStorage.setItem('articles', JSON.stringify(data.articles));
         setArticles(data.articles);
-      // }
+      }
     } catch (error) {
       console.error('Failed to fetch news:', error.message);
     }
   }
 
   useEffect(() => {
+    console.log("window type :", typeof window, " Not Undefined :", window !== 'undefined');
     if (typeof window !== 'undefined') {
       if (!sessionStorage.getItem('articles')) {
         getData();
