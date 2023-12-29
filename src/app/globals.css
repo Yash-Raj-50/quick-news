@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+.ant-form-item-label label{
+  font-size: 16px !important;
+}
+
+.logo {
+  background-image: url('../assets/mesh-gradient.png');
+  background-size: 100% 100%;
+}
+
+.ant-drawer-wrapper-body{
+  background-color: rgb(226 232 240);
+}
+
+.ant-card-body{
+  height: 100%;
+  padding: 8px !important;
+}
+
+.home {
+  background-image: url('../assets/newsCartoonEdit.png');
+  background-position: center;
+  background-size: contain;
+}
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +47,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
