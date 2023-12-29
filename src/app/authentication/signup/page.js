@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 // import Email from '../../../assets/Email.png'
-import FormImage from '../../../assets/form.png'
+import FormImage from '../../../assets/Form.png'
 import Logo from '../../../components/others/logo'
 import RegistrationInput from '../../../components/antd/registerInput'
 import Link from 'next/link'
